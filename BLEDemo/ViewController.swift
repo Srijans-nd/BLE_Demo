@@ -15,6 +15,16 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
     }
 
-
+    @IBAction func emitBLE(_ sender: Any) {
+        performSegue(withIdentifier: "HomeToBLE", sender: self)
+    }
+    
+    @IBAction func findBLEPeripherals(_ sender: Any) {
+        performSegue(withIdentifier: "HomeToBLECentral", sender: self)
+        
+    }
+    @IBAction func broadcastiBeacon(_ sender: Any) {
+        performSegue(withIdentifier: "HomeToiBeacon", sender: self)
+    }
 }
 

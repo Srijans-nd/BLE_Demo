@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="arF-T4-AeX">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.47"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -9,16 +13,140 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="BLEDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eB-hH-0IB">
+                                <rect key="frame" x="101" y="242" width="173" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go to BLE Emitter Screen"/>
+                                <connections>
+                                    <action selector="emitBLE:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Wv6-Zf-PXW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Ba-au-F3y">
+                                <rect key="frame" x="101" y="326" width="174" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go to BLE Central Screen"/>
+                                <connections>
+                                    <action selector="findBLEPeripherals:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8Kq-gd-hGb"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rAh-bZ-dPY">
+                                <rect key="frame" x="114" y="416" width="149" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go to iBeacon Screen"/>
+                                <connections>
+                                    <action selector="broadcastiBeacon:" destination="BYZ-38-t0r" eventType="touchUpInside" id="R0I-1Z-atb"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <navigationItem key="navigationItem" id="omI-cC-Jue"/>
+                    <connections>
+                        <segue destination="e5A-E4-vld" kind="show" identifier="HomeToBLE" id="cZd-B5-h6g"/>
+                        <segue destination="jnP-Kh-Qcf" kind="show" identifier="HomeToBLECentral" id="VRJ-2N-N4W"/>
+                        <segue destination="i2E-9J-F5b" kind="show" identifier="HomeToiBeacon" id="PaQ-mc-vJC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1608.8" y="27.436281859070466"/>
+        </scene>
+        <!--BLEViewController-->
+        <scene sceneID="lMH-sy-QtA">
+            <objects>
+                <viewController storyboardIdentifier="BLEViewController" title="BLEViewController" id="e5A-E4-vld" customClass="BLEViewController" customModule="BLEDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="0XD-q0-D7E">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="BLE Emitter Screen" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="H6c-Pj-BZm">
+                                <rect key="frame" x="90" y="122" width="195" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8HI-m9-gdh"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UXb-gV-xcX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2396" y="-233"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="PhV-If-VlN">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="arF-T4-AeX" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="lTN-tc-xlP">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="0ua-5U-h2s"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lBN-t8-NtI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="700" y="-670.61469265367316"/>
+        </scene>
+        <!--Beacon Broadcaster-->
+        <scene sceneID="XBN-tS-7tc">
+            <objects>
+                <viewController id="i2E-9J-F5b" customClass="IBeaconBroadcaster" customModule="BLEDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aaP-pZ-Mni">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="UeM-Vw-n2P"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfY-9O-TiE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1609" y="751"/>
+        </scene>
+        <!--BLE Receiver Screen-->
+        <scene sceneID="GS7-11-poY">
+            <objects>
+                <viewController title="BLE Receiver Screen" id="jnP-Kh-Qcf" customClass="BLECentralViewController" customModule="BLEDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UUq-JX-POm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yMy-zV-GZa">
+                                <rect key="frame" x="0.0" y="91" width="375" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="jnP-Kh-Qcf" id="J63-YQ-un0"/>
+                                    <outlet property="delegate" destination="jnP-Kh-Qcf" id="n0k-uG-WT1"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="yMy-zV-GZa" firstAttribute="top" secondItem="iz5-76-jlG" secondAttribute="top" constant="27" id="4nJ-dD-IIn"/>
+                            <constraint firstItem="iz5-76-jlG" firstAttribute="bottom" secondItem="yMy-zV-GZa" secondAttribute="bottom" constant="20" id="uNJ-UZ-8Wd"/>
+                            <constraint firstItem="yMy-zV-GZa" firstAttribute="leading" secondItem="iz5-76-jlG" secondAttribute="leading" id="uyW-gW-mHw"/>
+                            <constraint firstItem="iz5-76-jlG" firstAttribute="trailing" secondItem="yMy-zV-GZa" secondAttribute="trailing" id="w2G-Vu-t1r"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="iz5-76-jlG"/>
+                    </view>
+                    <connections>
+                        <outlet property="BLEDeviceList" destination="yMy-zV-GZa" id="lhz-SS-LsT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gfB-3h-xEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2396" y="472.71364317841085"/>
         </scene>
     </scenes>
 </document>
